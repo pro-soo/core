@@ -22,17 +22,23 @@ public class AppConfig {
 
     @Bean // 스프링 컨테이너에 등록된다
     public MemberService memberService() {
+        //1번
+        System.out.println("call AppConfig.memberService");
         // 생성자 주입 (Injection)
         return new MemberServiceImpl(memberRepository());
     }
 
     @Bean
     public MemberRepository memberRepository() {
+        //2번? 3번?
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
     @Bean
     public OrderService orderService() {
+        //1번
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
